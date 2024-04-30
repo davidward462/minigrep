@@ -1,5 +1,7 @@
 // Bring module into scope for getting command line arguments
 use std::env;
+// For reading file
+use std::fs;
 
 fn main() {
 
@@ -11,6 +13,12 @@ fn main() {
 
     println!("Search term: {}", search_string);
     println!("File: {}", file_path);
+
+
+    // Read file
+    let text = fs::read_to_string(file_path).expect("Should have been able to read the file.");
+
+    println!("Text:\n{}", text);
 
     // Debug macro
     dbg!(args);

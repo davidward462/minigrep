@@ -14,10 +14,10 @@ fn main() {
     println!("Search term: {}", search_string);
     println!("File: {}", file_path);
 
-
     // Read file
     let text = fs::read_to_string(file_path).expect("Should have been able to read the file.");
 
+    // Print text from file
     println!("Text:\n{}", text);
 
     // Debug macro

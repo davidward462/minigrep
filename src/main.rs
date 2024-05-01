@@ -17,7 +17,6 @@ fn main() {
 
     let (search_string, file_path) = parse_config(&args);
 
-
     println!("Search term: {}", search_string);
     println!("File: {}", file_path);
 

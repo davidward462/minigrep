@@ -3,13 +3,20 @@ use std::env;
 // For reading file
 use std::fs;
 
+fn parse_config(args:&[String]) -> (&str, &str)
+{
+    let search_string = &args[1];
+    let file_path = &args[2];
+    (search_string, file_path)
+}
+
 fn main() {
 
     // Get arguments and convert to collection (vector of strings)
     let args: Vec<String> = env::args().collect();
 
-    let search_string = &args[1];
-    let file_path = &args[2];
+    let (search_string, file_path) = parse_config(&args);
+
 
     println!("Search term: {}", search_string);
     println!("File: {}", file_path);

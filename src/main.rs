@@ -3,11 +3,19 @@ use std::env;
 // For reading file
 use std::fs;
 
-fn parse_config(args:&[String]) -> (&str, &str)
+// Hold program configuration data
+struct Config {
+    query: String,
+    file_path: String,
+}
+
+fn parse_config(args:&[String]) -> Config
 {
     let query = &args[1];
     let file_path = &args[2];
-    (query, file_path)
+
+    // return the config struct
+    Config {query, file_path}
 }
 
 fn main() {

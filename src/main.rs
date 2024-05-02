@@ -5,9 +5,9 @@ use std::fs;
 
 fn parse_config(args:&[String]) -> (&str, &str)
 {
-    let search_string = &args[1];
+    let query = &args[1];
     let file_path = &args[2];
-    (search_string, file_path)
+    (query, file_path)
 }
 
 fn main() {
@@ -15,9 +15,9 @@ fn main() {
     // Get arguments and convert to collection (vector of strings)
     let args: Vec<String> = env::args().collect();
 
-    let (search_string, file_path) = parse_config(&args);
+    let (query, file_path) = parse_config(&args);
 
-    println!("Search term: {}", search_string);
+    println!("Search term: {}", query);
     println!("File: {}", file_path);
 
     // Read file

@@ -1,6 +1,7 @@
 use std::env; // command line arguments
 use std::fs; // read file
 use std::process; // exit process
+use std::error::Error;
 
 // Hold program configuration data
 struct Config {
@@ -26,6 +27,21 @@ impl Config {
     }
 }
 
+// Main logic of program
+fn run(config: Config) -> Result<(), Box<dyn Error>>
+{
+    println!("Search term: {}", config.query);
+    println!("File: {}", config.file_path);
+
+    // Read file
+    let text = fs::read_to_string(config.file_path)?;
+
+    // Print text from file
+    println!("Text:\n{}", text);
+
+    Ok(())
+}
+
 fn main() {
 
     // Get arguments and convert to collection (vector of strings)
@@ -38,15 +54,19 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Search term: {}", config.query);
-    println!("File: {}", config.file_path);
-
-    // Read file
-    let text = fs::read_to_string(config.file_path).expect("Should have been able to read the file.");
-
-    // Print text from file
-    println!("Text:\n{}", text);
-
-    // Debug macro
-    dbg!(args);
+    if let Err(e) = run(config) {
+        println!("Application erorr: {e}");
+        process::exit(1);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

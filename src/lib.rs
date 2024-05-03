@@ -28,14 +28,8 @@ impl Config {
 // Main logic of program
 pub fn run(config: Config) -> Result<(), Box<dyn Error>>
 {
-    println!("Search term: {}", config.query);
-    println!("File: {}", config.file_path);
-
     // Read file
-    let text = fs::read_to_string(config.file_path)?;
-
-    // Print text from file
-    println!("Text:\n{}", text);
+    let _text = fs::read_to_string(config.file_path)?;
 
     Ok(())
 }

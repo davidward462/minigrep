@@ -27,7 +27,15 @@ impl Config {
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>
 {
-    vec![]
+    let mut results = Vec::new();
+
+    // iterate through 
+    for line in contents.lines() {
+        if line.contains(query) {
+        results.push(line);
+        }
+    }
+    results
 }
 
 // Main logic of program

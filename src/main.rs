@@ -12,12 +12,12 @@ fn main() {
     // Call build() function implemented on the Config struct
     // The unwrap_or_else calls anonymous function on error
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("{err}");
+        eprintln!("{err}");
         process::exit(1);
     });
 
     if let Err(e) = minigrep::run(config) {
-        println!("Application erorr: {e}");
+        eprintln!("Application erorr: {e}");
         process::exit(1);
     }
 }

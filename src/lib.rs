@@ -38,6 +38,19 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>
     results
 }
 
+pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str>
+{
+    let mut results = Vec::new();
+
+    // iterate through 
+    for line in contents.lines() {
+        if line.contains(query) {
+        results.push(line);
+        }
+    }
+    results
+}
+
 // Main logic of program
 pub fn run(config: Config) -> Result<(), Box<dyn Error>>
 {
@@ -61,7 +74,7 @@ mod tests
     use super::*;
 
     #[test]
-    fn one_result()
+    fn case_sensitive()
     {
         let query = "duct";
         let contents = "\

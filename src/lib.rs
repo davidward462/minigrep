@@ -42,9 +42,14 @@ pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a st
 {
     let mut results = Vec::new();
 
+    // make query lowercase and store as string slice
+    let query = query.to_lowercase();
+
     // iterate through 
     for line in contents.lines() {
-        if line.contains(query) {
+
+        // make line lowercase before checking
+        if line.to_lowercase().contains(&query) {
         results.push(line);
         }
     }
